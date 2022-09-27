@@ -7,5 +7,4 @@ select
     -- amount is stored in cents, convert it to dollars
     amount / 100 as amount,
     created as created_at
-
-from dbt-bigquery-363116.stripe.payment
+from {{ source('stripe', 'payment') }}
