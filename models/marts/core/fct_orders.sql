@@ -1,12 +1,11 @@
-with payments as (
+with orders as  (
+    select * from {{ ref('stg_orders' )}}
+),
+
+payments as (
     select * from {{ ref('stg_payments') }}
 ),
 
-orders as (
-
-    select * from {{ ref('stg_orders') }}
-
-),
 order_payments as (
     select
         order_id,
@@ -29,4 +28,3 @@ final as (
 )
 
 select * from final
-
